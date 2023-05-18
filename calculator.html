@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" name="field" id="field" />
+      <div>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('4')">4</button>
+        <br />
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <br />
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="cleardata()">c</button>
+        <button onclick="add('+')">+</button>
+        <br />
+        <button onclick="sub('-')">-</button>
+        <button onclick="mul('*')">*</button>
+        <button onclick="div('/')">/</button>
+        <button onclick="result()">=</button>
+      </div>
+    </div>
+
+    <script>
+      let current = "";
+      let operator = "";
+
+      function appendValue(v) {
+        current += v;
+        document.getElementById("field").value = current;
+      }
+      function add(o) {
+        current += "," + o + ",";
+        operator = o;
+        document.getElementById("field").value = current;
+      }
+      function sub(o) {
+        current += "," + o + ",";
+        operator = o;
+        document.getElementById("field").value = current;
+      }
+      function mul(o) {
+        current += "," + o + ",";
+        operator = o;
+        document.getElementById("field").value = current;
+      }
+      function div(o) {
+        current += "," + o + ",";
+        operator = o;
+        document.getElementById("field").value = current;
+      }
+
+      function result() {
+        console.log({ current });
+        console.log(operator);
+        let currArray = current.split(",");
+        let resultAns = 0;
+        console.log("currArray", Number(currArray[0]) + Number(currArray[2]));
+
+        if (operator === "+") {
+          // alert(operator)
+          resultAns = Number(currArray[0]) + Number(currArray[2]);
+        } else {
+          resultAns = Number(currArray[0]) - Number(currArray[2]);
+        }
+
+        console.log("result", resultAns);
+        document.getElementById("field").value = resultAns;
+        current = "";
+        operator = "";
+      }
+      function cleardata() {
+        current = "";
+        operator = "";
+        document.getElementById("field").value = "";
+      }
+    </script>
+  </body>
+</html>

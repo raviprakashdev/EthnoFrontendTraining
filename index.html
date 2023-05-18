@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/x-icon" href="icons8-favicon-16.png" />
+
+    <title>Day1</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- class and ids -->
+    <!-- Ravi Prakash -->
+    <div class="outerbox">
+      <div class="ravi-innerbox">
+        <h1 class="ravi-center">
+          Hello i am <span class="ravi-name">Ravi Prakash</span>
+        </h1>
+        <p>Software Developer at beGalileo.</p>
+        <img
+          src="https://picsum.photos/seed/picsum/200/300"
+          alt=""
+          class="ravi-image"
+        />
+        <h3>Hobbies</h3>
+        <ul>
+          <li>Movies</li>
+          <li>Cricket</li>
+        </ul>
+        <a href="https://github.com/raviprakashdev" target="_blank">
+          <button>Read more</button>
+        </a>
+      </div>
+    </div>
+
+    <button onclick="getLocalStorage()">Get Local Storage Data</button>
+    <div id="localStorage"></div>
+    <div id="localStorage1"></div>
+    <div id="api"></div>
+
+    <!-- <div class="outerbox">
+      <div class="ravi-innerbox">
+        <h1 class="ravi-center">
+          Hello i am <span class="ravi-name">Shefali</span>
+        </h1>
+        <p>Software Developer at beGalileo.</p>
+        <img
+          src="https://picsum.photos/seed/picsum/200/300"
+          alt=""
+          class="ravi-image"
+        />
+        <h3>Hobbies</h3>
+        <ul>
+          <li>Baking</li>
+          <li>Dancing</li>
+        </ul>
+        <a href="https://github.com/raviprakashdev" target="_blank">
+          <button>Read more</button>
+        </a>
+      </div>
+    </div> -->
+    <script>
+      //       var requestOptions = {
+      //   method: 'GET',
+      //   redirect: 'follow'
+      // };
+      function getLocalStorage() {
+        sessionStorage.setItem("Name", "Ravi Prakash");
+        localStorage.setItem("Position", "Software Developer");
+        var Data = sessionStorage.getItem("Name");
+        var Data1 = localStorage.getItem("Position");
+        document.getElementById("localStorage").innerHTML = Data;
+        document.getElementById("localStorage1").innerHTML = Data1;
+      }
+
+      // fetch("https://reqres.in/api/users", requestOptions)
+      //   .then(response => response.text())
+      //   .then(result => console.log({result}))
+      //   .catch(error => console.log('error', error));
+      var config = {
+        method: "GET",
+      };
+      fetch("http://localhost:8001/", config)
+        .then((response) => {
+          // console.log("data",response.status)
+          return response;
+        })
+        .then((result) => {
+          console.log("data received from api", result);
+          console.log("typeof", typeof result);
+          // document.getElementById("api").innerHTML =  result.total
+        })
+        .catch((error) => console.log("error", error));
+      // fetch("https://reqres.in/api/users",config)
+      // .then(response => {
+      //   // console.log("data",response.status)
+      //   return response.json()
+      // })
+      // .then(result => {
+      //   console.log("data received from api",result)
+      //   console.log("typeof",typeof result)
+      //   document.getElementById("api").innerHTML =  result.total
+      // })
+      // .catch(error => console.log('error', error))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+.background{
+    background-image: url("./images/pexels-kevin-ku-577585.jpg");
+    height: 100vh;
+    background-size: cover;
+}
+html ,body{
+    padding: 0;
+    margin: 0;
+}
+.profile-pic{
+    display: flex;
+    justify-content: center;
+}
+.profile-pic img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-top: 50px;
+}
+.name{
+    display: flex;
+    justify-content: center;
+    color: blanchedalmond;
+}
+.about{
+    display: flex;
+    justify-content: center;
+    color: white;
+    border: 2px solid red;
+    margin: 0 290px ;
+    padding: 20px;
+    background-color: darkslategray;
+}
+.read-more{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.skills{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    border: 2px solid red;
+    margin: 0 290px ;
+    padding: 20px;
+    background-color: darkslategray;
+}

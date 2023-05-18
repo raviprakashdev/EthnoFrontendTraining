@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			text-align: center;
+		}
+        form {
+			display: flex;
+			flex-direction: row;
+			margin: 20px;
+		}
+		input[type="text"] {
+			flex-grow: 1;
+			font-size: 16px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px 0 0 5px;
+		}
+		button {
+			font-size: 16px;
+			padding: 10px;
+			border: none;
+			background-color: #4CAF50;
+			color: white;
+			border-radius: 0 5px 5px 0;
+			cursor: pointer;
+		}
+    </style>
+</head>
+<body>
+    <h1>Todo App</h1>
+    <form id="todo-form">
+		<input type="text" id="todo-input" placeholder="Add a new task">
+		<button type="submit" id="add">Add</button>
+	</form>
+    <ul id="todo-list"></ul>
+    <script>
+        const form = document.getElementById('todo-form');
+		const input = document.getElementById('todo-input');
+		const list = document.getElementById('todo-list');
+        let todos = [];
+        document.getElementById("add").addEventListener('click', (event) => {
+            event.preventDefault();
+			const value = input.value.trim();
+			if (value === '') {
+				return;
+			}
+			const todo = {
+				id: Date.now(),
+				text: value,
+				completed: false
+			};
+			todos.push(todo);
+			input.value = '';
+			render();
+		});
+        function render() {
+			list.innerHTML = '';
+			todos.forEach((todo) => {
+				const item = document.createElement('li');
+				const text = document.createElement('span');
+				text.innerText = todo.text;
+				item.appendChild(text);
+				const button = document.createElement('button');
+				button.innerText = 'Delete';
+				button.addEventListener('click', () => {
+					todos = todos.filter((t) => t.id !== todo.id);
+					render();
+				});
+				item.appendChild(button);
+				list.appendChild(item);
+			});
+		}
+
+		render();
+    </script>
+</body>
+</html>
